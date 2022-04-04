@@ -1,0 +1,13 @@
+.inputList {
+    padding: 10px;
+    margin-right: 90px;
+}
+
+.input {
+    width: 150%;
+    padding: 10px;
+}
+
+.footerContent .slds-hyphenate{
+    text-align: right!important;
+}

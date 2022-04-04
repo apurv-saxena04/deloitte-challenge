@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DuplicateRule xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <actionOnInsert>Allow</actionOnInsert>
+    <actionOnUpdate>Allow</actionOnUpdate>
+    <alertText>Use one of these records?</alertText>
+    <description>Identify survey result records that duplicate other Lead/Contact with matching email address.</description>
+    <duplicateRuleFilter>
+        <booleanFilter xsi:nil="true"/>
+        <duplicateRuleFilterItems>
+            <field>Email_Address__c</field>
+            <operation>notEqual</operation>
+            <value>BLANK</value>
+            <sortOrder>1</sortOrder>
+            <table>Survey_Result__c</table>
+        </duplicateRuleFilterItems>
+    </duplicateRuleFilter>
+    <duplicateRuleMatchRules>
+        <matchRuleSObjectType>Contact</matchRuleSObjectType>
+        <matchingRule>Matching_email_with_Contact_matching_rule</matchingRule>
+        <objectMapping>
+            <inputObject>Survey_Result__c</inputObject>
+            <mappingFields>
+                <inputField>Email_Address__c</inputField>
+                <outputField>Email</outputField>
+            </mappingFields>
+            <outputObject>Contact</outputObject>
+        </objectMapping>
+    </duplicateRuleMatchRules>
+    <duplicateRuleMatchRules>
+        <matchRuleSObjectType>Lead</matchRuleSObjectType>
+        <matchingRule>Matching_email_with_Lead_matching_rule</matchingRule>
+        <objectMapping>
+            <inputObject>Survey_Result__c</inputObject>
+            <mappingFields>
+                <inputField>Email_Address__c</inputField>
+                <outputField>Email</outputField>
+            </mappingFields>
+            <outputObject>Lead</outputObject>
+        </objectMapping>
+    </duplicateRuleMatchRules>
+    <isActive>true</isActive>
+    <masterLabel>Matching email</masterLabel>
+    <operationsOnInsert>Alert</operationsOnInsert>
+    <securityOption>BypassSharingRules</securityOption>
+    <sortOrder>1</sortOrder>
+</DuplicateRule>
